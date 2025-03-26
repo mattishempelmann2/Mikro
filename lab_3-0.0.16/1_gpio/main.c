@@ -40,12 +40,12 @@ int main(){
 		 * turn on LED matrix if it is. */
 		if((GPIO->IN & 1 << 13)) {
 			for(int i = 17; i <= 20; i++){
-				GPIO->OUTCLR = (1 << i);
+				GPIO->OUTSET = (1 << i);
 			}
 		}
 		if ((GPIO->IN & 1 << 14)) {
 			for(int i = 17; i <= 20; i++){
-				GPIO->OUTSET = (1 << i);
+				GPIO->OUTCLR = (1 << i);
 			}
 		}
 
