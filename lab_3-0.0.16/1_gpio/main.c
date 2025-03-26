@@ -36,27 +36,24 @@ int main(){
 	int sleep = 0;
 	while(1){
 
-		/* Check if button 1 is pressed;
+		/* Check if button 1 is pressed;0x00003000
 		 * turn on LED matrix if it is. */
-		if(GPIO->IN && 0x00002000) {
-			GPIO->PIN_CNF[13] = (1 << 2);
-			GPIO->PIN_CNF[14] = (3 << 2);
+		if(GPIO->IN == 8192) {
+			GPIO->OUTSET = (1 << 17);
+			GPIO->OUTSET = (1 << 18);
+			GPIO->OUTSET = (1 << 19);
+			GPIO->OUTSET = (1 << 20);
 
-			for(int i = 17; i <= 20; i++){
-				GPIO->OUTCLR = (1 << i);
-			}
+		} 
+		if (GPIO->IN == 16384) {
+			GPIO->OUTCLR = (1 << 17);
+			GPIO->OUTCLR = (1 << 18);
+			GPIO->OUTCLR = (1 << 19);
+			GPIO->OUTCLR = (1 << 20);
 		}
 
 		/* Check if button 2 is pressed;
 		 * turn off LED matrix if it is. */
-		if(GPIO->IN && 0x00003000) {
-			GPIO->PIN_CNF[14] = (1 << 2);
-			GPIO->PIN_CNF[13] = (3 << 2);
-
-			for(int i = 17; i <= 20; i++){
-				GPIO->OUTSET = (1 << i);
-			}
-		}
 
 		sleep = 10000;
 		while(--sleep); // Delay
