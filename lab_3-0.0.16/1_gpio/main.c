@@ -38,18 +38,15 @@ int main(){
 
 		/* Check if button 1 is pressed;0x00003000
 		 * turn on LED matrix if it is. */
-		if(GPIO->IN == 8192) {
-			GPIO->OUTSET = (1 << 17);
-			GPIO->OUTSET = (1 << 18);
-			GPIO->OUTSET = (1 << 19);
-			GPIO->OUTSET = (1 << 20);
-
-		} 
-		if (GPIO->IN == 16384) {
-			GPIO->OUTCLR = (1 << 17);
-			GPIO->OUTCLR = (1 << 18);
-			GPIO->OUTCLR = (1 << 19);
-			GPIO->OUTCLR = (1 << 20);
+		if((GPIO->IN & 1 << 13)) {
+			for(int i = 17; i <= 20; i++){
+				GPIO->OUTCLR = (1 << i);
+			}
+		}
+		if ((GPIO->IN & 1 << 14)) {
+			for(int i = 17; i <= 20; i++){
+				GPIO->OUTSET = (1 << i);
+			}
 		}
 
 		/* Check if button 2 is pressed;
