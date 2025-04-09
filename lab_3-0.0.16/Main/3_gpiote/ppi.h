@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PPI_H
 #define PPI_H
 #include <stdint.h>
@@ -29,3 +30,6 @@ typedef struct {
 } NRF_PPI_REG;
 
 #endif
+
+
+void ppi_init();

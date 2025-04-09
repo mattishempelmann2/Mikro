@@ -1,3 +1,4 @@
+#pragma once
 #ifndef GPIOTE_H
 #define GPIOTE_H
 #include <stdint.h>
@@ -22,3 +23,5 @@ typedef struct {
 } NRF_GPIOTE_REG;
 
 #endif
+
+void gpiote_init();
