@@ -31,19 +31,19 @@ int main(){
 	}
 
 	// Configure buttons -> see button_init()
-	button_init();
 
 	int sleep = 0;
 	while(1){
 
-		/* Check if button 1 is pressed;0x00003000
+		/* Check if button 1 is pressed;
 		 * turn on LED matrix if it is. */
 		if((GPIO->IN & 1 << 13)) {
 			for(int i = 17; i <= 20; i++){
 				GPIO->OUTSET = (1 << i);
 			}
 		}
-		if ((GPIO->IN & 1 << 14)) {
+
+		if((GPIO->IN & 1 << 14)) {
 			for(int i = 17; i <= 20; i++){
 				GPIO->OUTCLR = (1 << i);
 			}
