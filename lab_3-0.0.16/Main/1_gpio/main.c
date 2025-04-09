@@ -24,28 +24,30 @@ void button_init(){
 }
 
 int main(){
+	button_init();
 	// Configure LED Matrix
 	for(int i = 17; i <= 20; i++){
 		GPIO->DIRSET = (1 << i);
 		GPIO->OUTCLR = (1 << i);
 	}
 
+
 	// Configure buttons -> see button_init()
 
 	int sleep = 0;
 	while(1){
-
 		/* Check if button 1 is pressed;
 		 * turn on LED matrix if it is. */
-		if((GPIO->IN & 1 << 13)) {
+
+		if((GPIO->IN & (1 << 13)) == 0) {
 			for(int i = 17; i <= 20; i++){
-				GPIO->OUTSET = (1 << i);
+				GPIO->OUTCLR = (1 << i);
 			}
 		}
 
-		if((GPIO->IN & 1 << 14)) {
+		if((GPIO->IN & (1 << 14)) == 0) {
 			for(int i = 17; i <= 20; i++){
-				GPIO->OUTCLR = (1 << i);
+				GPIO->OUTSET = (1 << i);
 			}
 		}
 
